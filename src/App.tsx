@@ -5,12 +5,13 @@ import './App.css'
 import GenericForm from './components/GenericForm/component.form/form.generic'
 import { Box, Button, ThemeProvider } from '@mui/material'
 import theme from './theme'
+import type { ITextField } from './components/GenericForm/types/controls.types'
 
 function App() {
   const [count, setCount] = useState(0)
   const [showForm, setShowForm] = useState(false)
 
-  const formControls = [
+  const formControls: ITextField[] = [
     {
       type: "text",
       name: "name",
