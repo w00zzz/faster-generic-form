@@ -1,11 +1,41 @@
 {
-  "name": "new-proj",
-  "private": true,
-  "version": "0.0.0",
+  "name": "faster-generic-form",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A generic form component library built with React, Formik and Material UI",
+  "author": "w00zzz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/w00zzz/faster-generic-form.git"
+  },
+  "keywords": [
+    "react",
+    "formik",
+    "material-ui",
+    "form",
+    "generic-form"
+  ],
+  "bugs": {
+    "url": "https://github.com/w00zzz/faster-generic-form/issues"
+  },
+  "homepage": "https://github.com/w00zzz/faster-generic-form#readme",
+  "main": "./dist/generic-form.cjs.js",
+  "module": "./dist/generic-form.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/generic-form.es.js",
+      "require": "./dist/generic-form.cjs.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b tsconfig.build.json && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -13,6 +43,7 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.2",
     "@mui/material": "^7.3.2",
     "@mui/styled-engine": "^7.3.2",
     "@mui/system": "^7.3.2",
@@ -20,7 +51,15 @@
     "formik": "^2.4.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "styled": "link:@/styled"
+    "recoil": "^0.7.7"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2",
+    "formik": "^2.4.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

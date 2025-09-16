@@ -2,7 +2,7 @@ import { Alert, AlertTitle, IconButton } from "@mui/material";
 
 import { AlertColor } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import useNotifications from "@/hooks/notifications";
+import useNotifications from "../hooks/notifications";
 
 function NotificationProvider() {
   const [, notificationsActions] = useNotifications();

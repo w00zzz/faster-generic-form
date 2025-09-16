@@ -1,69 +1,92 @@
-# React + TypeScript + Vite
+# Generic Form Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A flexible and reusable form component library built with React, Formik, and Material UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Easy to use generic form component
+- Built-in validation
+- Material UI styling
+- Customizable form controls
+- TypeScript support
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install generic-form-library
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```jsx
+import { GenericForm } from 'generic-form-library';
 
-export default tseslint.config([
-  globalIgnores(['dist']),
+const formControls = [
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+    type: "text",
+    name: "name",
+    label: "Name",
+    placeholder: "Enter your name",
+    gridValues: { xs: 12 },
+    validations: {
+      required: { message: "Name is required" }
+    }
   },
-])
+  {
+    type: "email",
+    name: "email",
+    label: "Email",
+    placeholder: "Enter your email",
+    gridValues: { xs: 12 },
+    validations: {
+      required: { message: "Email is required" },
+      email: { message: "Must be a valid email" }
+    }
+  }
+];
+
+const handleSubmit = (values) => {
+  console.log("Form values:", values);
+};
+
+function App() {
+  return (
+    <GenericForm
+      name="exampleForm"
+      title="Example Form"
+      controles={formControls}
+      submitFunction={handleSubmit}
+    />
+  );
+}
+
+export default App;
 ```
+
+## API
+
+### GenericForm Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| name | string | Unique identifier for the form |
+| title | string | Form title |
+| endpointPath | string | API endpoint for form submission |
+| controles | ITextField[] | Array of form controls |
+| submitFunction | function | Custom submit handler |
+
+### ITextField
+
+| Property | Type | Description |
+|----------|------|-------------|
+| type | 'text' \| 'email' \| 'password' \| 'number' \| 'select' \| 'checkbox' \| 'radio' | Type of input |
+| name | string | Field name |
+| label | string | Label for the field |
+| placeholder | string | Placeholder text |
+| options | { value: string; label: string }[] | Options for select and radio inputs |
+| gridValues | { xs, sm, md, lg, xl } | Grid sizing for responsive layout |
+| validations | Object | Validation rules |
+
+## License
+
+MIT

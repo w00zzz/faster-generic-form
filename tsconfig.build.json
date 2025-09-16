@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "emitDeclarationOnly": true,
+    "rootDir": "./src",
+    "verbatimModuleSyntax": false
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "src/main.tsx", 
+    "src/App.tsx", 
+    "src/App.css", 
+    "src/index.css",
+    "src/components/GenericForm/**/*"
+  ]
+}
